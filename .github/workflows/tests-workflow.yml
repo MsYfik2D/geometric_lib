@@ -3,13 +3,13 @@ name: Tests workflow
 on:
   push:
     branches:
-    -main
-    -release
+      -master
+      -release
   pull_request:
     branches:
-    -main
-    -realese
-    -develop
+      -main
+      -release
+      -develop
 
 jobs:
   test:
