@@ -1,37 +1,46 @@
-name: Tests workflow
+name: Run Tests and Code Checks
+
 
 on:
   push:
     branches:
-      -master
-      -release
+      - master
+      - release
   pull_request:
     branches:
-      -main
-      -release
-      -develop
+      - master
+      - release
+      - develop
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     env:
-      FULL_NAME: "Григорьев Ярослав Константинович"
+      FULL_NAME: "Григорьев Ярослав Конастантинович"
       GROUP_NUMBER: "M3115"
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Print information
-        run: |
-          echo "ФИО: ${{ env.FULL_NAME }}"
-          echo "Номер группы: ${{ env.GROUP_NUMBER }}"
-          echo "ник на Github: ${{ github.actor }}"
-      - name: Set up Python 3.13
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.13
-      - name: Run unit tests
-        run: |
-          python -m unittest discover -s /home/runner/work/geometric_lib/geometric_lib/tests
-      - name: Lint code with flakes
-        run: |
-          pip install flakes
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+
+    - name: user information
+      run: |
+        echo "Full Name: ${{ env.FULL_NAME }}"
+        echo "Group: M3115: ${{ env.GROUP_NUMBER }}"
+        echo "GitHub Username: ${{ github.actor }}"
+
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.13
+
+
+    - name: Run unit tests
+      run: |
+        python -m unittest discover -s /home/runner/work/geometric_lib/geometric_lib/tests
+
+
+    - name: Lint code with flake8
+      run: |
+        pip install flake8
