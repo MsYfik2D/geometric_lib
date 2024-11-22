@@ -3,11 +3,11 @@ name: Tests workflow
 on:
   push:
     branches:
-    -master 
+    -master
     -release
   pull_request:
     branches:
-    -master 
+    -master
     -realese
     -develop
 
@@ -35,4 +35,3 @@ jobs:
       - name: Lint code with flakes
         run: |
           pip install flakes
-          flakes --ignore-F401

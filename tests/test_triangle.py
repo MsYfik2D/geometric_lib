@@ -10,7 +10,7 @@ class TestTriangle(unittest.TestCase):
         # Act (when)
         result = area(a, b, c)
 
-        # Assert (then)
+        # Assert (then )
         self.assertEqual(result, 6)
 
     def test_perimeter(self):
