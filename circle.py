@@ -2,10 +2,12 @@ import math
 
 
 def area(r):
-    assert r >= 0
+    if r < 0:
+        raise AssertionError("Side length cannot be negative")
     return math.pi * r * r
 
 
 def perimeter(r):
-    assert r >= 0
+    if r < 0:
+        raise AssertionError("Side length cannot be negative")
     return 2 * math.pi * r
