@@ -5,19 +5,18 @@ import math
 
 class TestCircle(unittest.TestCase):
     def test_area(self):
-        # Arrange (given)
         radius = 1
-
-        # Act (when)
         result = area(radius)
-
-        # Assert (then)
         self.assertEqual(result, math.pi)
 
     def test_area_zero(self):
         radius = 0
         result = area(radius)
         self.assertEqual(result, 0)
+
+    def test_area_negative(self):
+        with self.assertRaises(AssertionError):
+            area(-1)
 
     def test_perimeter(self):
         radius = 1
@@ -28,6 +27,10 @@ class TestCircle(unittest.TestCase):
         radius = 0
         result = perimeter(radius)
         self.assertEqual(result, 0)
+
+    def test_perimeter_negative(self):
+        with self.assertRaises(AssertionError):
+            perimeter(-1)
 
 
 if __name__ == '__main__':
